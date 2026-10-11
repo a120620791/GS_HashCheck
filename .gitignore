@@ -1,0 +1,11 @@
+﻿# 构建产物
+[Bb]in/
+[Oo]bj/
+dist/
+
+# 本地 NuGet 缓存 / CLI 状态 / 临时文件
+.nuget/
+.tmp/
+
+# 测试样本
+artifacts/demo/

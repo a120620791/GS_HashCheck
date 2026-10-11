@@ -1,0 +1,53 @@
+﻿== Hash 校验工具 自检报告 ==
+时间   : 2026-10-11 10:14:42
+系统   : Microsoft Windows NT 10.0.26300.0
+运行时 : 10.0.7
+程序   : C:\Users\DongHao\AppData\Local\HashCheck\HashCheck.exe
+临时区 : C:\Users\DongHao\AppData\Local\Temp\HashCheck.SelfTest
+SHA-3  : 操作系统支持
+
+-- 1) 标准测试向量（空文件 / "abc"）--
+[空文件] empty.bin
+  PASS MD5     期望 d41d8cd98f00b204e9800998ecf8427e
+  PASS SHA-1   期望 da39a3ee5e6b4b0d3255bfef95601890afd80709
+  PASS SHA-256 期望 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  PASS SHA-512 期望 cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e
+  PASS SHA-3   期望 a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a
+  PASS BLAKE3  期望 af1349b9f5f9a1a6a0404dea36dcc9499bcb25c9adc112b7cc9a93cae41f3262
+[内容 "abc"] abc.bin
+  PASS MD5     期望 900150983cd24fb0d6963f7d28e17f72
+  PASS SHA-1   期望 a9993e364706816aba3e25717850c26c9cd0d89d
+  PASS SHA-256 期望 ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad
+  PASS SHA-512 期望 ddaf35a193617abacc417349ae20413112e6fa4e89a97ea20a9eeee64b55d39a2192992a274fc1a836ba3c23a3feebbd454d4423643ce80e2a9ac94fa54ca49f
+  PASS SHA-3   期望 3a985da74fe225b2045c172d6bd390bd855f086e3e9d525b46bfe24511431532
+  PASS BLAKE3  期望 6437b3ac38465133ffb63b75273a8db548c558465d79db03fd359c6cd5bd9d85
+
+-- 2) 多块路径（5120 字节，跨 BLAKE3 的 1024 字节 chunk 边界）--
+PASS BLAKE3 流式 == 一次性
+     期望 9cadc15fed8b5d854562b26a9536d9707cadeda9b143978f319ab34230535833
+PASS SHA-256 流式 == 一次性
+     期望 2d3fb9161493509e3fa3f5472d8a284ee687f64524f0925be67e132ef43f43e0
+PASS SHA-3 流式 == 一次性
+     期望 791faf2ff8ab27eb6ea5b860baa8db20336213bbe1da02e050f4da3451d868e4
+PASS SHA-512 摘要长度（128 位十六进制）
+     期望 128
+PASS BLAKE3 摘要长度（32 字节 = 64 位十六进制）
+     期望 64
+
+-- 3) 显示格式与导出命名 --
+PASS 行数（文件名 + 6 个算法）
+     期望 7
+PASS 第 1 行
+     期望 文件名称：big.bin
+PASS 第 2 行算法名
+     期望 MD5
+PASS 第 3 行算法名
+     期望 SHA-1
+PASS 第 7 行算法名
+     期望 BLAKE3
+PASS 导出文件名（单扩展名）
+     期望 C:\tmp\setup_Hash校验结果.txt
+PASS 导出文件名（多扩展名）
+     期望 C:\tmp\a.tar_Hash校验结果.txt
+
+== 全部通过 ==
